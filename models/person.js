@@ -16,3 +16,5 @@ const personSchema = new mongoose.Schema({
         default: false
     }
 });
+
+module.exports = mongoose.model('Person', personSchema);
