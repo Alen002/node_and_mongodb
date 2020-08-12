@@ -44,8 +44,20 @@ router.post('/', async(req, res) => {
         catch(err) {
         console.log('Could not create object');
         res.send('Error: Could not create object');
-    };
+    }
 });
 
+router.patch('/:id', async(req, res) => {
+    try {
+        const person = await Person.findById(req.params.id);
+        person.subscription = req.body.subscription;
+        const a1 = await person.save();
+        res.json(a1);
+    }
+    catch(err) {
+        console.log('No update possible');
+        res.send('Could not update the person');
+    }
+});
 
 module.exports = router;
