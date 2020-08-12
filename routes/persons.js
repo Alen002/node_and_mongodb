@@ -60,4 +60,19 @@ router.patch('/:id', async(req, res) => {
     }
 });
 
+router.delete('/:id', async(req, res) => {
+    try {
+        const person = await Person.findById(req.params.id);
+        const a1 = await person.delete();
+        res.json(a1);
+    }
+    catch(err) {
+        console.log('No delete possible');
+        res.send('Could not delete the person');
+    }
+});
+
+
+
+
 module.exports = router;
